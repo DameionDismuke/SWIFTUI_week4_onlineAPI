@@ -19,10 +19,16 @@ struct MovieDetailView: View {
         { movie in
             VStack {
                 
-                AsyncImage(url:URL(string: "https://image.tmdb.org/t/p/original\(movie.poster_path)"))
-                    //.resizable()
-                    .scaledToFit()
-                    
+                AsyncImage(url:URL(string: "https://image.tmdb.org/t/p/original\(movie.poster_path)")) {
+                    image in image
+                        .resizable()
+                         .aspectRatio(contentMode: .fit)
+                         .frame(maxHeight:300)
+                }
+            placeholder: {
+                ProgressView() //put placeholder, ProgressView() does a spinwheel
+            }
+                
                 //print("hello")
                 Text(movie.title)
                     .font(.title2)
@@ -32,7 +38,7 @@ struct MovieDetailView: View {
                     .padding(.horizontal)
                 
                 HStack {
-                    Label("/(movie.popularity)", systemImage: "eye.fill")
+                    Label("\(movie.popularity)", systemImage: "eye.fill")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                     

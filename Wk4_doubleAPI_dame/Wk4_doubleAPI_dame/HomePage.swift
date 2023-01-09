@@ -55,7 +55,7 @@ struct HomePage: View {
                             .foregroundColor(.accentColor)
                         
                     } placeholder: {
-                        Color.orange //put placeholder
+                        ProgressView() //put placeholder
                     }
                     
                     VStack(alignment: .leading ) { //creates a vertical stack
