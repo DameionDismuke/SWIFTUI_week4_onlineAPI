@@ -18,12 +18,12 @@ struct MovieDetailView: View {
         VStack {
             Spacer()
             
-            Image()
+            Image(systemName: "globe")
                 .resizable()
                 .scaledToFit()
                 .cornerRadius(12)
             
-            Text()
+            Text("The Title of the movie")
                 .font(.title2)
                 .fontWeight(.semibold)
                 .lineLimit(2)
@@ -31,20 +31,20 @@ struct MovieDetailView: View {
                 .padding(.horizontal)
             
             HStack {
-                Label("", systemImage: "eye.fill")
+                Label("something", systemImage: "eye.fill")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 
-                Text()
+                Text("Release Date")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
             
-            Text()
+            Text("This will be the Overview")
                 .font(.body)
                 .padding()
             
-            Link(destination: movie.url, label: {
+            /*Link(destination: movie.url, label: {
                 Text("Watch Now")
                     .bold()
                     .font(.title2)
@@ -52,7 +52,7 @@ struct MovieDetailView: View {
                     .background(Color(.systemRed))
                     .foregroundColor(.white)
                     .cornerRadius(10)
-            })
+            })*/
         }
     }
 }
