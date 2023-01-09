@@ -99,8 +99,8 @@
 			isa = PBXGroup;
 			children = (
 				0254B0E3296BD8DD00B1AE29 /* Wk4_doubleAPI_dameApp.swift */,
-				0254B10D296BEBAA00B1AE29 /* popularMovies.swift */,
 				0254B0E5296BD8DD00B1AE29 /* HomePage.swift */,
+				0254B10D296BEBAA00B1AE29 /* popularMovies.swift */,
 				0254B10F296BF14600B1AE29 /* MovieDetailView.swift */,
 				0254B0E7296BD8E100B1AE29 /* Assets.xcassets */,
 				0254B0E9296BD8E100B1AE29 /* Preview Content */,

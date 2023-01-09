@@ -10,49 +10,55 @@ import SwiftUI
 struct MovieDetailView: View {
     
     
-    // var movie: popMovie
+    @ObservedObject var movieDV = ViewModel()
     
     
     var body: some View {
         
-        VStack {
-            Spacer()
-            
-            Image(systemName: "globe")
-                .resizable()
-                .scaledToFit()
-                .cornerRadius(12)
-            
-            Text("The Title of the movie")
-                .font(.title2)
-                .fontWeight(.semibold)
-                .lineLimit(2)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal)
-            
-            HStack {
-                Label("something", systemImage: "eye.fill")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                
-                Text("Release Date")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-            }
-            
-            Text("This will be the Overview")
-                .font(.body)
-                .padding()
-            
-            /*Link(destination: movie.url, label: {
-                Text("Watch Now")
-                    .bold()
+        List(movieDV.movie, id: \.id)
+        { movie in
+            VStack {
+                /*
+                AsyncImage(url:URL(string: "https://image.tmdb.org/t/p/original\(movie.poster_path)"))
+                    //.resizable()
+                    .scaledToFit()
+                    .frame(width: 500) */
+                //print("hello")
+                Text(movie.title)
                     .font(.title2)
-                    .frame(width: 100, height: 50)
-                    .background(Color(.systemRed))
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-            })*/
+                    .fontWeight(.semibold)
+                    .lineLimit(2)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+                
+                HStack {
+                    Label("/(movie.popularity)", systemImage: "eye.fill")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                    
+                    Text(movie.release_date)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+                
+                Text(movie.overview)
+                    .font(.body)
+                    .padding()
+                
+                /*Link(destination: movie.url, label: {
+                    Text("Watch Now")
+                        .bold()
+                        .font(.title2)
+                        .frame(width: 100, height: 50)
+                        .background(Color(.systemRed))
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                })*/
+            }
+            .onAppear()
+            {movieDV.fetchMDV()}
+            
+            
         }
     }
 }

@@ -57,25 +57,20 @@ struct HomePage: View {
                     } placeholder: {
                         Color.orange //put placeholder
                     }
-                        
-                            
-                        
-                        
+                    
                     VStack(alignment: .leading ) { //creates a vertical stack
-                            Text(movie.title)
-                                .fontWeight(.semibold)
-                                .lineLimit(2)
-                                .minimumScaleFactor(0.5)
-                            
-                            Text(movie.release_date)
-                                .font(.subheadline)
-                            
-                        }
-                    })
+                        Text(movie.title)
+                            .fontWeight(.semibold)
+                            .lineLimit(2)
+                            .minimumScaleFactor(0.5)
+                        
+                        Text(movie.release_date)
+                            .font(.subheadline)
+                        
+                    }
+                })
                 .navigationTitle("Popular Movies")//title of list
             }
-            
-            
             
         }
         .onAppear()

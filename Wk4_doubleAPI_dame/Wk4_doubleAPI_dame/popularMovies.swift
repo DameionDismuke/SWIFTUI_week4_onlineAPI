@@ -17,7 +17,7 @@ struct popMovie : Decodable {
     
 }
 
-struct Results : Decodable {
+struct Results : Decodable, Identifiable {
     
     let id: Int
     let title: String
@@ -35,7 +35,6 @@ class ViewModel: ObservableObject
     
     @Published var movie : [Results] = []
     
-    
     func fetch() {
         guard let url = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=653c931d946bb2a9870f4ed725ecd322") else {
             return
@@ -52,19 +51,23 @@ class ViewModel: ObservableObject
                 let homePages = try JSONDecoder().decode(popMovie.self, from: data)
                 DispatchQueue.main.async {
                     self.movie = homePages.results
-                    print(self.movie)
+                    //print(self.movie)
                 }
-                
             }
             catch {
                 print(error)
             }
             
         }
-        /*guard let url2 = URL(string: "https://api.themoviedb.org/3/movie/{movie_id}?api_key=653c931d946bb2a9870f4ed725ecd322&language=en-US") else {
+        task.resume()
+        //task2.resume()
+    }
+    
+    func fetchMDV() {
+        guard let url2 = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=653c931d946bb2a9870f4ed725ecd322") else {
             return
-        }*/
-        /*let task2 = URLSession.shared.dataTask(with: url2) { [self]
+        }
+        let task2 = URLSession.shared.dataTask(with: url2) { [self]
             data2, _, error in
             guard let data2 = data2, error == nil else {
                 return
@@ -82,9 +85,7 @@ class ViewModel: ObservableObject
             catch {
                 print(error)
             }
-            
-        }*/
-        task.resume()
-        //task2.resume()
+        }
+        task2.resume()
     }
 }
