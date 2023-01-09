@@ -37,13 +37,11 @@ class ViewModel: ObservableObject
     
     
     func fetch() {
-        guard let url1 = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=653c931d946bb2a9870f4ed725ecd322") else {
+        guard let url = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=653c931d946bb2a9870f4ed725ecd322") else {
             return
         }
-        guard let url2 = URL(string: "https://api.themoviedb.org/3/movie/{movie_id}?api_key=653c931d946bb2a9870f4ed725ecd322&language=en-US") else {
-            return
-        }
-        let task1 = URLSession.shared.dataTask(with: url1) { [self]
+        
+        let task = URLSession.shared.dataTask(with: url) { [self]
             data, _, error in
             guard let data = data, error == nil else {
                 return
@@ -63,15 +61,18 @@ class ViewModel: ObservableObject
             }
             
         }
-        let task2 = URLSession.shared.dataTask(with: url2) { [self]
-            data, _, error in
-            guard let data = data, error == nil else {
+        /*guard let url2 = URL(string: "https://api.themoviedb.org/3/movie/{movie_id}?api_key=653c931d946bb2a9870f4ed725ecd322&language=en-US") else {
+            return
+        }*/
+        /*let task2 = URLSession.shared.dataTask(with: url2) { [self]
+            data2, _, error in
+            guard let data2 = data2, error == nil else {
                 return
             }
             
             //Convert to JSON
             do {
-                let MDV = try JSONDecoder().decode(popMovie.self, from: data)
+                let MDV = try JSONDecoder().decode(popMovie.self, from: data2)
                 DispatchQueue.main.async {
                     self.movie = MDV.results
                     print(self.movie)
@@ -82,8 +83,8 @@ class ViewModel: ObservableObject
                 print(error)
             }
             
-        }
-        task1.resume()
-        task2.resume()
+        }*/
+        task.resume()
+        //task2.resume()
     }
 }

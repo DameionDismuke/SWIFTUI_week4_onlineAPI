@@ -34,6 +34,7 @@
  https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US
  */
 // https://image.tmdb.org/t/p/original/ + poster_image in order to get the images
+// "https://image.tmdb.org/t/p/original\(movie.poster_path)"
 
 import SwiftUI
 
@@ -46,17 +47,24 @@ struct HomePage: View {
         NavigationView {
             List(moviesVM.movie, id: \.id) { movie in //turn HStack into a list with CMD + click
                 NavigationLink( destination: MovieDetailView(), label: {
-                    Image("https://image.tmdb.org/t/p/original\(movie.poster_path)")
-                        
+                    AsyncImage(url:URL(string: "https://image.tmdb.org/t/p/original\(movie.poster_path)")){
+                        image in image
+                            .resizable()
                             .scaledToFit()
-                        //.frame(height: 40)
+                            .frame(height: 50)
                             .foregroundColor(.accentColor)
                         
+                    } placeholder: {
+                        Color.orange //put placeholder
+                    }
                         
-                        VStack { //creates a vertical stack
+                            
+                        
+                        
+                    VStack(alignment: .leading ) { //creates a vertical stack
                             Text(movie.title)
                                 .fontWeight(.semibold)
-                                .lineLimit(1)
+                                .lineLimit(2)
                                 .minimumScaleFactor(0.5)
                             
                             Text(movie.release_date)
