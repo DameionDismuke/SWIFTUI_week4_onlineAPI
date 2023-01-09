@@ -62,7 +62,7 @@ struct MovieDetailView: View {
                 })*/
             }
             //.onAppear()
-            //{movieDV.fetch()}
+            //{movieDV.fetchMDV()}
             
             
         }.onAppear()

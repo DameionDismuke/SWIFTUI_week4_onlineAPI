@@ -60,7 +60,6 @@ class ViewModel: ObservableObject
             
         }
         task.resume()
-        //task2.resume()
     }
     
     func fetchMDV() {
@@ -71,7 +70,6 @@ class ViewModel: ObservableObject
         let task2 = URLSession.shared.dataTask(with: url2) { [self]
             data2, _, error in
             guard let data2 = data2, error == nil else {
-                print("Hrllo damieon")
                 return
             }
             
