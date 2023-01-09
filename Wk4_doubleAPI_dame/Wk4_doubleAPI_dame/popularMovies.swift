@@ -65,11 +65,13 @@ class ViewModel: ObservableObject
     
     func fetchMDV() {
         guard let url2 = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=653c931d946bb2a9870f4ed725ecd322") else {
+            print("23423424")
             return
         }
         let task2 = URLSession.shared.dataTask(with: url2) { [self]
             data2, _, error in
             guard let data2 = data2, error == nil else {
+                print("Hrllo damieon")
                 return
             }
             

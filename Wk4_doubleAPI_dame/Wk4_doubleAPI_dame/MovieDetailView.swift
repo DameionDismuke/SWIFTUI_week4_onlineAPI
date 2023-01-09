@@ -18,11 +18,11 @@ struct MovieDetailView: View {
         List(movieDV.movie, id: \.id)
         { movie in
             VStack {
-                /*
+                
                 AsyncImage(url:URL(string: "https://image.tmdb.org/t/p/original\(movie.poster_path)"))
                     //.resizable()
                     .scaledToFit()
-                    .frame(width: 500) */
+                    .frame(width: 100)
                 //print("hello")
                 Text(movie.title)
                     .font(.title2)
@@ -55,11 +55,12 @@ struct MovieDetailView: View {
                         .cornerRadius(10)
                 })*/
             }
-            .onAppear()
-            {movieDV.fetchMDV()}
+            //.onAppear()
+            //{movieDV.fetch()}
             
             
-        }
+        }.onAppear()
+        {movieDV.fetch()}
     }
 }
 
