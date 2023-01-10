@@ -46,7 +46,7 @@ struct HomePage: View {
     var body: some View {
         NavigationView {
             List(moviesVM.movie, id: \.id) { movie in //turn HStack into a list with CMD + click
-                NavigationLink( destination: MovieDetailView(), label: {
+                NavigationLink( destination: MovieDetailView(aMovie: movie), label: {
                     AsyncImage(url:URL(string: "https://image.tmdb.org/t/p/original\(movie.poster_path)")){
                         image in image
                             .resizable()
